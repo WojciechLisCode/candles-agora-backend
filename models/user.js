@@ -14,6 +14,16 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "userId",
         as: "had",
       });
+      user.belongsToMany(models.candle, {
+        through: "iHaveCandle",
+        foreignKey: "userId",
+        as: "have",
+      });
+      user.belongsToMany(models.candle, {
+        through: "iCanSellCandle",
+        foreignKey: "userId",
+        as: "dontNeed",
+      });
     }
   }
   user.init(

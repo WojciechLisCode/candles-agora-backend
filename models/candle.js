@@ -3,15 +3,25 @@ const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class candle extends Model {
     static associate(models) {
-      // candle.belongsToMany(models.user, {
-      //   through: "iWantThem",
-      //   foreignKey: "candleId",
-      //   as: "wants",
-      // });
       candle.belongsToMany(models.user, {
-        through: "iDidHaveCandles",
+        through: "iWantCandle",
         foreignKey: "candleId",
-        // as: "had",
+        as: "wants",
+      });
+      candle.belongsToMany(models.user, {
+        through: "iDidHaveCandle",
+        foreignKey: "candleId",
+        as: "had",
+      });
+      candle.belongsToMany(models.user, {
+        through: "iHaveCandle",
+        foreignKey: "candleId",
+        as: "have",
+      });
+      candle.belongsToMany(models.user, {
+        through: "iCanSellCandle",
+        foreignKey: "candleId",
+        as: "dontNeed",
       });
     }
   }
