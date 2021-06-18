@@ -41,4 +41,22 @@ router.get("/:id", async (req, res) => {
   res.status(200).send({ message: "ok", candleDetails });
 });
 
+router.post("/newCandle", async (req, res) => {
+  console.log(req.body);
+  const { candleName, candleDescription, candleImageUrl } = req.body;
+
+  const candle = await Candle.create({
+    name: candleName,
+    description: candleDescription,
+    imageUrl: candleImageUrl,
+  });
+  const newCandle = await Candle.findAll({
+    where: {
+      name: candleName,
+    },
+  });
+  console.log(newCandle);
+  const newCandleId = newCandle[0].id;
+  res.status(200).send({ message: "Auction added succesfully", newCandleId });
+});
 module.exports = router;
