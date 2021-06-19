@@ -7,6 +7,10 @@ const jsonParser = bodyParser.json();
 
 const User = require("../models").user;
 const Candle = require("../models").candle;
+const IWantCandle = require("../models").iWantCandle;
+const IHaveCandle = require("../models").iHaveCandle;
+const IDidHaveCandle = require("../models").iDidHaveCandle;
+const ICanSellCandle = require("../models").iCanSellCandle;
 
 const router = new Router();
 
@@ -59,4 +63,45 @@ router.post("/newCandle", async (req, res) => {
   const newCandleId = newCandle[0].id;
   res.status(200).send({ message: "Auction added succesfully", newCandleId });
 });
+
+router.post("/newConnection/iWantCandle", async (req, res) => {
+  console.log(req.body);
+  const { connectionText, candleId, userId } = req.body;
+  const connection = await IWantCandle.create({
+    connectionText: connectionText,
+    candleId: candleId,
+    userId: userId,
+  });
+});
+
+router.post("/newConnection/iHaveCandle", async (req, res) => {
+  console.log(req.body);
+  const { connectionText, candleId, userId } = req.body;
+  const connection = await IHaveCandle.create({
+    connectionText: connectionText,
+    candleId: candleId,
+    userId: userId,
+  });
+});
+
+router.post("/newConnection/iDidHaveCandle", async (req, res) => {
+  console.log(req.body);
+  const { connectionText, candleId, userId } = req.body;
+  const connection = await IDidHaveCandle.create({
+    connectionText: connectionText,
+    candleId: candleId,
+    userId: userId,
+  });
+});
+
+router.post("/newConnection/iCanSellCandle", async (req, res) => {
+  console.log(req.body);
+  const { connectionText, candleId, userId } = req.body;
+  const connection = await ICanSellCandle.create({
+    connectionText: connectionText,
+    candleId: candleId,
+    userId: userId,
+  });
+});
+
 module.exports = router;
