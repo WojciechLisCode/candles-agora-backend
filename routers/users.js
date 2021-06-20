@@ -1,12 +1,23 @@
 const { Router } = require("express");
+const Sequelize = require("sequelize");
+
+const bodyParser = require("body-parser");
+
+const jsonParser = bodyParser.json();
 
 const User = require("../models").user;
 const Candle = require("../models").candle;
 
 const router = new Router();
 
+const Op = Sequelize.Op;
+const searchInput = "";
 router.get("/", async (req, res) => {
-  const users = await User.findAll({
+  console.log(req.query);
+  const users = await User.findAndCountAll({
+    where: {
+      name: { [Op.like]: `%${req.query.searchInput}%` },
+    },
     include: [
       { model: Candle, as: "had" },
       { model: Candle, as: "have" },
