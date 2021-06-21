@@ -3,6 +3,7 @@ const Sequelize = require("sequelize");
 const bcrypt = require("bcrypt");
 const SALT_ROUNDS = 10;
 
+const nodemailer = require("nodemailer");
 const bodyParser = require("body-parser");
 
 const jsonParser = bodyParser.json();
@@ -67,6 +68,32 @@ router.post("/login", async (req, res, next) => {
 
   const token = toJWT({ userId: user.id });
   return res.status(200).send({ token, ...user.dataValues });
+});
+
+router.post("/send", function (req, res, next) {
+  const transporter = nodemailer.createTransport({
+    service: "Hotmail",
+    auth: {
+      user: "candles_agora@hotmail.com",
+      pass: "candlesproject21 ",
+    },
+  });
+  const mailOptions = {
+    from: `candles_agora@hotmail.com`,
+    to: "wlis58372@gmail.com",
+    subject: `New message from `,
+    text: `Message from <b>${req.body.senderName}<b>`,
+    html: `Message from <b><a href=http://localhost:3000/user/${req.body.senderId}>${req.body.senderName}</a><b><br>
+    ${req.body.message}`,
+  };
+  transporter.sendMail(mailOptions, function (err, res) {
+    if (err) {
+      console.error("there was an error: ", err);
+    } else {
+      console.log("here is the res: ", res);
+    }
+  });
+  res.status(200).send("Message was sent to this user email address");
 });
 
 module.exports = router;
