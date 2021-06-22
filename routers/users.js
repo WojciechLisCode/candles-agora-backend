@@ -70,6 +70,34 @@ router.post("/login", async (req, res, next) => {
   return res.status(200).send({ token, ...user.dataValues });
 });
 
+router.post("/signup", async (req, res) => {
+  console.log(req.body);
+  const { email, password, name } = req.body;
+  if (!email || !password || !name) {
+    return res.status(400).send("Please provide an email, password and a name");
+  }
+
+  try {
+    const newUser = await User.create({
+      email,
+      password: bcrypt.hashSync(password, SALT_ROUNDS),
+      name,
+      isAdmin: false,
+      isBlocked: false,
+    });
+    delete newUser.dataValues["password"];
+    const token = toJWT({ userId: newUser.id });
+    res.status(201).json({ token, ...newUser.dataValues });
+  } catch (error) {
+    if (error.name === "SequelizeUniqueConstraintError") {
+      return res
+        .status(400)
+        .send({ message: "There is an existing account with this email" });
+    }
+    return res.status(400).send({ message: "Something went wrong, sorry" });
+  }
+});
+
 router.post("/send", function (req, res, next) {
   console.log(req.body);
   const transporter = nodemailer.createTransport({
