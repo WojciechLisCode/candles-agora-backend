@@ -64,13 +64,14 @@ router.post("/login", async (req, res, next) => {
     });
   }
 
-  delete user.dataValues["password"]; // don't send back the password hash
+  delete user.dataValues["password"];
 
   const token = toJWT({ userId: user.id });
   return res.status(200).send({ token, ...user.dataValues });
 });
 
 router.post("/send", function (req, res, next) {
+  console.log(req.body);
   const transporter = nodemailer.createTransport({
     service: "Hotmail",
     auth: {
