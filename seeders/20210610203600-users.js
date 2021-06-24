@@ -9,8 +9,8 @@ module.exports = {
       [
         {
           name: "Jola",
-          email: "jola@mail.com",
-          password: bcrypt.hashSync("123", SALT_ROUNDS),
+          email: "jolantazgoda@gmail.com",
+          password: bcrypt.hashSync("marvel1989", SALT_ROUNDS),
           createdAt: new Date(),
           updatedAt: new Date(),
           isAdmin: true,
@@ -18,20 +18,11 @@ module.exports = {
         },
         {
           name: "Wojtek",
-          email: "wojtek@mail.com",
-          password: bcrypt.hashSync("123", SALT_ROUNDS),
+          email: "wlis58372@gmail.com",
+          password: bcrypt.hashSync("erobos86", SALT_ROUNDS),
           createdAt: new Date(),
           updatedAt: new Date(),
           isAdmin: true,
-          isBlocked: false,
-        },
-        {
-          name: "Marvel",
-          email: "marvel@mail.com",
-          password: bcrypt.hashSync("123", SALT_ROUNDS),
-          createdAt: new Date(),
-          updatedAt: new Date(),
-          isAdmin: false,
           isBlocked: false,
         },
       ],

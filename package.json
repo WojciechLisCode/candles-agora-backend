@@ -16,7 +16,7 @@
   "main": "index.js",
   "devDependencies": {},
   "scripts": {
-    "start": "node .",
+    "start": "node index.js",
     "dev": "env DELAY=1000 npx nodemon .",
     "resetDB": "npx sequelize-cli db:migrate:undo:all && npm run initdev",
     "initdev": "npm run migrate && npm run seed",
