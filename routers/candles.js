@@ -83,6 +83,13 @@ router.post("/newConnection/iWantCandle", async (req, res) => {
   });
 });
 
+router.delete("/deleteConnection/iWantCandle/:id", async (req, res) => {
+  console.log(req.params.id);
+  const connection = await IWantCandle.destroy({
+    where: { candleId: req.params.id },
+  });
+});
+
 router.post("/newConnection/iHaveCandle", async (req, res) => {
   console.log(req.body);
   const { connectionText, candleId, userId } = req.body;
@@ -90,6 +97,13 @@ router.post("/newConnection/iHaveCandle", async (req, res) => {
     connectionText: connectionText,
     candleId: candleId,
     userId: userId,
+  });
+});
+
+router.delete("/deleteConnection/iHaveCandle/:id", async (req, res) => {
+  console.log(req.params.id);
+  const connection = await IHaveCandle.destroy({
+    where: { candleId: req.params.id },
   });
 });
 
@@ -103,6 +117,13 @@ router.post("/newConnection/iDidHaveCandle", async (req, res) => {
   });
 });
 
+router.delete("/deleteConnection/iDidHaveCandle/:id", async (req, res) => {
+  console.log(req.params.id);
+  const connection = await IDidHaveCandle.destroy({
+    where: { candleId: req.params.id },
+  });
+});
+
 router.post("/newConnection/iCanSellCandle", async (req, res) => {
   console.log(req.body);
   const { connectionText, candleId, userId } = req.body;
@@ -110,6 +131,13 @@ router.post("/newConnection/iCanSellCandle", async (req, res) => {
     connectionText: connectionText,
     candleId: candleId,
     userId: userId,
+  });
+});
+
+router.delete("/deleteConnection/iCanSellCandle/:id", async (req, res) => {
+  console.log(req.params.id);
+  const connection = await ICanSellCandle.destroy({
+    where: { candleId: req.params.id },
   });
 });
 
