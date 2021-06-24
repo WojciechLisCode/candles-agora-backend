@@ -47,6 +47,17 @@ router.get("/:id", async (req, res) => {
   res.status(200).send({ message: "ok", userDetails });
 });
 
+router.patch("/isAdmin/:id", async (req, res) => {
+  const id = req.params.id;
+  console.log(id);
+  const user = await User.findByPk(id);
+  if (user.dataValues.isAdmin) {
+    await User.update({ isAdmin: false }, { where: { id: id } });
+  } else {
+    await User.update({ isAdmin: true }, { where: { id: id } });
+  }
+});
+
 router.post("/login", async (req, res, next) => {
   const { email, password } = req.body;
 
