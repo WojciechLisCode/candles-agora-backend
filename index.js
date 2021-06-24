@@ -1,18 +1,16 @@
 const express = require("express");
+const app = express();
+const corsMiddleWare = require("cors");
+app.use(corsMiddleWare());
+
+const PORT = process.env.PORT || 4000;
 
 const candlesRouter = require("./routers/candles");
 const usersRouter = require("./routers/users");
 const myToken = require("./routers/token");
 
-const PORT = 4000;
-
-const corsMiddleWare = require("cors");
-
-const app = express();
-
 const bodyParserMiddleWare = express.json();
 app.use(bodyParserMiddleWare);
-app.use(corsMiddleWare());
 
 app.get("/", (req, res) => {
   res.send("test reposne");

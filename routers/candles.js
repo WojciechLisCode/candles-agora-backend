@@ -45,6 +45,15 @@ router.get("/:id", async (req, res) => {
   res.status(200).send({ message: "ok", candleDetails });
 });
 
+router.delete("/:id", async (req, res) => {
+  console.log(req.params.id);
+
+  const candleDetails = await Candle.destroy({
+    where: { id: req.params.id },
+  });
+  res.status(200).send({ candleDetails });
+});
+
 router.post("/newCandle", async (req, res) => {
   console.log(req.body);
   const { candleName, candleDescription, candleImageUrl } = req.body;
@@ -74,6 +83,13 @@ router.post("/newConnection/iWantCandle", async (req, res) => {
   });
 });
 
+router.delete("/deleteConnection/iWantCandle/:id", async (req, res) => {
+  console.log(req.params.id);
+  const connection = await IWantCandle.destroy({
+    where: { candleId: req.params.id },
+  });
+});
+
 router.post("/newConnection/iHaveCandle", async (req, res) => {
   console.log(req.body);
   const { connectionText, candleId, userId } = req.body;
@@ -81,6 +97,13 @@ router.post("/newConnection/iHaveCandle", async (req, res) => {
     connectionText: connectionText,
     candleId: candleId,
     userId: userId,
+  });
+});
+
+router.delete("/deleteConnection/iHaveCandle/:id", async (req, res) => {
+  console.log(req.params.id);
+  const connection = await IHaveCandle.destroy({
+    where: { candleId: req.params.id },
   });
 });
 
@@ -94,6 +117,13 @@ router.post("/newConnection/iDidHaveCandle", async (req, res) => {
   });
 });
 
+router.delete("/deleteConnection/iDidHaveCandle/:id", async (req, res) => {
+  console.log(req.params.id);
+  const connection = await IDidHaveCandle.destroy({
+    where: { candleId: req.params.id },
+  });
+});
+
 router.post("/newConnection/iCanSellCandle", async (req, res) => {
   console.log(req.body);
   const { connectionText, candleId, userId } = req.body;
@@ -101,6 +131,13 @@ router.post("/newConnection/iCanSellCandle", async (req, res) => {
     connectionText: connectionText,
     candleId: candleId,
     userId: userId,
+  });
+});
+
+router.delete("/deleteConnection/iCanSellCandle/:id", async (req, res) => {
+  console.log(req.params.id);
+  const connection = await ICanSellCandle.destroy({
+    where: { candleId: req.params.id },
   });
 });
 

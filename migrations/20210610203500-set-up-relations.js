@@ -9,7 +9,7 @@ module.exports = {
         key: "id",
       },
       onUpdate: "CASCADE",
-      onDelete: "SET NULL",
+      onDelete: "CASCADE",
     });
     await queryInterface.addColumn("iDidHaveCandles", "candleId", {
       type: Sequelize.INTEGER,
@@ -18,7 +18,7 @@ module.exports = {
         key: "id",
       },
       onUpdate: "CASCADE",
-      onDelete: "SET NULL",
+      onDelete: "CASCADE",
     });
     await queryInterface.addColumn("iHaveCandles", "userId", {
       type: Sequelize.INTEGER,
@@ -27,7 +27,7 @@ module.exports = {
         key: "id",
       },
       onUpdate: "CASCADE",
-      onDelete: "SET NULL",
+      onDelete: "CASCADE",
     });
     await queryInterface.addColumn("iHaveCandles", "candleId", {
       type: Sequelize.INTEGER,
@@ -36,7 +36,7 @@ module.exports = {
         key: "id",
       },
       onUpdate: "CASCADE",
-      onDelete: "SET NULL",
+      onDelete: "CASCADE",
     });
     await queryInterface.addColumn("iCanSellCandles", "userId", {
       type: Sequelize.INTEGER,
@@ -45,7 +45,7 @@ module.exports = {
         key: "id",
       },
       onUpdate: "CASCADE",
-      onDelete: "SET NULL",
+      onDelete: "CASCADE",
     });
     await queryInterface.addColumn("iCanSellCandles", "candleId", {
       type: Sequelize.INTEGER,
@@ -54,7 +54,7 @@ module.exports = {
         key: "id",
       },
       onUpdate: "CASCADE",
-      onDelete: "SET NULL",
+      onDelete: "CASCADE",
     });
     await queryInterface.addColumn("iWantCandles", "userId", {
       type: Sequelize.INTEGER,
@@ -63,7 +63,7 @@ module.exports = {
         key: "id",
       },
       onUpdate: "CASCADE",
-      onDelete: "SET NULL",
+      onDelete: "CASCADE",
     });
     await queryInterface.addColumn("iWantCandles", "candleId", {
       type: Sequelize.INTEGER,
@@ -72,7 +72,7 @@ module.exports = {
         key: "id",
       },
       onUpdate: "CASCADE",
-      onDelete: "SET NULL",
+      onDelete: "CASCADE",
     });
   },
 
