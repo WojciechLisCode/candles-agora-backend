@@ -45,6 +45,15 @@ router.get("/:id", async (req, res) => {
   res.status(200).send({ message: "ok", candleDetails });
 });
 
+router.delete("/:id", async (req, res) => {
+  console.log(req.params.id);
+
+  const candleDetails = await Candle.destroy({
+    where: { id: req.params.id },
+  });
+  res.status(200).send({ candleDetails });
+});
+
 router.post("/newCandle", async (req, res) => {
   console.log(req.body);
   const { candleName, candleDescription, candleImageUrl } = req.body;
