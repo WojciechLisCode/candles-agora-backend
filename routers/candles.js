@@ -70,7 +70,9 @@ router.post("/newCandle", async (req, res) => {
   });
   console.log(newCandle);
   const newCandleId = newCandle[0].id;
-  res.status(200).send({ message: "Auction added succesfully", newCandleId });
+  res
+    .status(200)
+    .send({ message: "Candle was added succesfully", newCandleId });
 });
 
 router.post("/newConnection/iWantCandle", async (req, res) => {

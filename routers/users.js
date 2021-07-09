@@ -123,7 +123,7 @@ router.post("/send", function (req, res, next) {
     to: "wlis58372@gmail.com",
     subject: `New message from `,
     text: `Message from <b>${req.body.senderName}<b>`,
-    html: `Message from <b><a href=http://localhost:3000/user/${req.body.senderId}>${req.body.senderName}</a><b><br>
+    html: `Message from <b><a href=https://candles-agora.herokuapp.com/${req.body.senderId}>${req.body.senderName}</a><b><br>
     ${req.body.message}`,
   };
   transporter.sendMail(mailOptions, function (err, res) {
