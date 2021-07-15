@@ -56,12 +56,13 @@ router.delete("/:id", async (req, res) => {
 
 router.post("/newCandle", async (req, res) => {
   console.log(req.body);
-  const { candleName, candleDescription, candleImageUrl } = req.body;
+  const { candleName, candleDescription, candleImageUrl, brandid } = req.body;
 
   const candle = await Candle.create({
     name: candleName,
     description: candleDescription,
     imageUrl: candleImageUrl,
+    brandid: brandid,
   });
   const newCandle = await Candle.findAll({
     where: {
