@@ -120,8 +120,8 @@ router.post("/send", function (req, res, next) {
   });
   const mailOptions = {
     from: `candles_agora@hotmail.com`,
-    to: "wlis58372@gmail.com",
-    subject: `New message from `,
+    to: `${req.body.reciverMail}`,
+    subject: `New message from ${req.body.senderName}`,
     text: `Message from <b>${req.body.senderName}<b>`,
     html: `Message from <b><a href=https://candles-agora.netlify.app/user/${req.body.senderId}>${req.body.senderName}</a><b><br>
     ${req.body.message}`,
