@@ -9,6 +9,8 @@ This is a backend repository. The frontend repository can be found [here](https:
 
 Candles Agoara is made for scented candles lovers. It contains a database of candles (currently limited to Yankee Candles™) and helps with the exchange of candles or opinions about them.
 
+## <p align="center"> Original OML</p>
+
 ## <p align="center"> App features/User stories: </p>
 
 1. ### Landing page.
