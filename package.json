@@ -20,7 +20,6 @@
     "dev": "env DELAY=1000 npx nodemon .",
     "resetDB": "npx sequelize-cli db:migrate:undo:all && npm run initdev",
     "initdev": "npm run migrate && npm run seed",
-    "test": "echo \"Error: no test specified\" && exit 1",
     "migrate": "npx sequelize-cli db:migrate",
     "seed": "npx sequelize-cli db:seed:all"
   },
